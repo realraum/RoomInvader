@@ -5,12 +5,15 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello():
+def main():
 	#flash('Hi')
 	return render_template('main.html')
+
+@app.route('/enqueue/youtube', methods=['POST'])
+def enqueue():
+	return "OK: %s" % request.form['url']
 
 
 if __name__ == "__main__":
 	app.debug = True
 	app.run()
-	
