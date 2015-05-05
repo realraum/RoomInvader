@@ -1,7 +1,7 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
-import sh
+import os
 
 app = Flask(__name__)
 
@@ -15,8 +15,7 @@ def main():
 def enqueue():
 
 	# this is experimental, replace with mpv.py or ipc something:
-	param = "-u realraum mpv --no-video  %s" % request.form['url']
-	sh.sudo(param)
+	os.system("sudo -u realraum mpv --no-video  %s" % request.form['url'])
 
 	return "OK: %s" % request.form['url']
 
