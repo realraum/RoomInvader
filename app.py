@@ -15,7 +15,7 @@ def main():
 def enqueue():
 
 	# this is experimental, replace with mpv.py or ipc something:
-	param = "sudo -u realraum mpv --no-video  %s" % request.form['url']
+	param = "-u realraum mpv --no-video  %s" % request.form['url']
 	sh.sudo(param)
 
 	return "OK: %s" % request.form['url']
