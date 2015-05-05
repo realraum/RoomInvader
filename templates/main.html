@@ -14,20 +14,54 @@
   <ul>
     <li><a href="#tabs-queue">Queue</a></li>
     <li><a href="#tabs-lib">Library</a></li>
+    <li><a href="#tabs-daap">DAAP</a></li>
     <li><a href="#tabs-youtube">YouTube</a></li>
     <li><a href="#tabs-backlog">Backlog</a></li>
   </ul>
 
   <div id="tabs-queue">
-    <p>Queue</p>
+    <table id="queueTable" class="table table-striped">
+        <tr>
+            <th>Source</th>
+            <th>Song</th>
+            <th>Artist</th>
+            <th>Vote</th>
+        </tr>
+        <tr>
+            <td>Lib</td>
+            <td>Test Song</td>
+            <td>Test Artist</td>
+            <td><button class="button">upvote</button></td>
+        </tr>
+        <tr>
+            <td>YT</td>
+            <td>Test Song</td>
+            <td>Test Artist</td>
+            <td><button class="button">upvote</button></td>
+        </tr>
+        <tr>
+            <td>DAAP</td>
+            <td>Test Song</td>
+            <td>Test Artist</td>
+            <td><button class="button">upvote</button></td>
+        </tr>
+    </table>
   </div>
 
   <div id="tabs-lib">
-    <p>Library</p>
+    <p>Local Library</p>
+  </div>
+
+  <div id="tabs-daap">
+    <p>DAAP Library</p>
   </div>
 
   <div id="tabs-youtube">
-    <p>YouTube</p>
+    <p>
+        <label for="youtube">YouTube URL:</label> 
+        <input id="youtube" name="youtube url">
+        <button class="button" onClick="enqueueYoutube();">Enqueue</button>
+    </p> 
   </div>
 
   <div id="tabs-backlog">
