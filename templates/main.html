@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <script>
+      $(function() {
+        $( "#tabs" ).tabs();
+      });
+    </script>
+{% endblock %}
+
+
+{% block body %}
+<div id="tabs" lass="row">
+  <ul>
+    <li><a href="#tabs-queue">Queue</a></li>
+    <li><a href="#tabs-lib">Library</a></li>
+    <li><a href="#tabs-youtube">YouTube</a></li>
+    <li><a href="#tabs-backlog">Backlog</a></li>
+  </ul>
+
+  <div id="tabs-queue">
+    <p>Queue</p>
+  </div>
+
+  <div id="tabs-lib">
+    <p>Library</p>
+  </div>
+
+  <div id="tabs-youtube">
+    <p>YouTube</p>
+  </div>
+
+  <div id="tabs-backlog">
+    <p>Backlog</p>
+  </div>
+</div>
+{% endblock %}
