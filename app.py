@@ -1,7 +1,7 @@
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
-import os
+import subprocess
 
 app = Flask(__name__)
 
@@ -15,9 +15,11 @@ def main():
 def enqueue():
 
 	# this is experimental, replace with mpv.py or ipc something:
-	os.system("sudo -u realraum mpv --no-video  %s" % request.form['url'])
+	#os.system("sudo -u realraum mpv --no-video  %s" % request.form['url'])
+	#ret = subprocess.call(["sudo", "-u", "realraum", "mpv", "--no-video", request.form['url']])
+	ret = subprocess.call(["mpv", "--no-video", request.form['url']])
 
-	return "OK: %s" % request.form['url']
+	return "OK: %s (%d)" % (request.form['url'], ret)
 
 
 if __name__ == "__main__":
