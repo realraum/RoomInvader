@@ -8,7 +8,9 @@ import subprocess
 
 app = Flask(__name__)
 
+nowplaying = []
 queue = []
+
 
 def getYouTubeID(videoURL):
 	app.logger.debug('getting videoID: ' + videoURL)
@@ -24,6 +26,13 @@ def getYouTubeTitle(videoId):
 	return parse_qs(query)['title'][0]
 
 
+def appendToQueue(record):
+	if len(nowplaying) == 0:
+		nowplaying.append(record)
+	else:
+		queue.append(record)
+
+
 @app.route("/")
 def main():
 	#flash('Hi')
@@ -33,6 +42,11 @@ def main():
 @app.route('/queue', methods=['GET'])
 def getQueue():
 	return jsonify(queue=queue)
+
+
+@app.route('/np', methods=['GET'])
+def np():
+	return jsonify(np=nowplaying)
 
 
 @app.route('/enqueue/youtube', methods=['POST'])
@@ -50,7 +64,7 @@ def enqueue():
 
 	title = getYouTubeTitle(videoID)
 
-	queue.append({    'type': 'YT',
+	appendToQueue({    'type': 'YT',
 					 'title': title,
 					'artist': 'YouTube'})
 
